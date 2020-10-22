@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  database:
+    build: 
+      context: .
+      dockerfile: ./MSSQL/Dockerfile
+    restart: always
+    container_name: database
+    ports:
+      - "1433:1433"    
+    volumes: 
+      - ./MSSQL/sqldata:/var/opt/mssql/data 
+ 
+  webapi:
+    build: 
+      context: .
+      dockerfile: ./AppointmentAPI/Dockerfile 
+    container_name: webapi
+    restart: always
+    depends_on:
+      - redis
+      - database
+      - rabbitmq
+    ports:
+      - "5000:80"
+      - "5001:5001"
+
+  redis:
+    image: "redis:latest"
+    container_name: redis
+    ports:
+      - "6379:6379" 
+
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    container_name: rabbitmq
+    ports:
+      - "8080:15672"
+      - "15672:15672"
+      - "5672:5672"
+    hostname: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=user
+      - RABBITMQ_DEFAULT_PASS=password  
+
+    

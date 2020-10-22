@@ -1,9 +1,0 @@
-D:\Programiranje\CS Internship\HospitalB\AppointmentAPI\AppointmentAPI\bin\Debug\netcoreapp3.1\appsettings.Development.json
-D:\Programiranje\CS Internship\HospitalB\AppointmentAPI\AppointmentAPI\bin\Debug\netcoreapp3.1\appsettings.json
-D:\Programiranje\CS Internship\HospitalB\AppointmentAPI\AppointmentAPI\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
-D:\Programiranje\CS Internship\HospitalB\AppointmentAPI\AppointmentAPI\obj\Debug\netcoreapp3.1\AppointmentAPI.csprojAssemblyReference.cache
-D:\Programiranje\CS Internship\HospitalB\AppointmentAPI\AppointmentAPI\obj\Debug\netcoreapp3.1\AppointmentAPI.AssemblyInfoInputs.cache
-D:\Programiranje\CS Internship\HospitalB\AppointmentAPI\AppointmentAPI\obj\Debug\netcoreapp3.1\AppointmentAPI.AssemblyInfo.cs
-D:\Programiranje\CS Internship\HospitalB\AppointmentAPI\AppointmentAPI\obj\Debug\netcoreapp3.1\AppointmentAPI.RazorTargetAssemblyInfo.cache
-D:\Programiranje\CS Internship\HospitalB\AppointmentAPI\AppointmentAPI\obj\Debug\netcoreapp3.1\staticwebassets\AppointmentAPI.StaticWebAssets.Manifest.cache
-D:\Programiranje\CS Internship\HospitalB\AppointmentAPI\AppointmentAPI\obj\Debug\netcoreapp3.1\staticwebassets\AppointmentAPI.StaticWebAssets.xml
