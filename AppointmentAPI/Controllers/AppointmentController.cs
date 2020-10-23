@@ -73,5 +73,20 @@ namespace AppointmentAPI.Controllers
 
             cache.SortedSetRemove("SortedSet" + doctorId, id);
         }
+
+        [HttpDelete("doctor/{doctorId}")]
+        public void Delete(string doctorId)
+        {
+            List<Appointment> appointments = new List<Appointment>();
+            RedisValue[] allAppointments = cache.SortedSetRangeByScore("SortedSet" + doctorId);
+            foreach (var item in allAppointments)
+            {
+                var key = RedisStore.GetRedisKey(item);
+                cache.KeyDelete(key);
+                cache.SortedSetRemove("SortedSet" + doctorId, item);
+            }
+
+ 
+        }
     }
 }

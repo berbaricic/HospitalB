@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   database:
-    image: "doc2210/mssql:sqlatest"
+    image: "doc2210/mssqlserver:latest"
     restart: always
     container_name: database
     ports:
