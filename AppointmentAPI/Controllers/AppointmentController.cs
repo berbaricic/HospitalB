@@ -16,7 +16,7 @@ namespace AppointmentAPI.Controllers
             this.cache = cache;
         }
 
-        // GET: /Appointment
+        // GET: /appointment/doctor/doktor1
         [HttpGet("appointment/doctor/{doctorId}")]
         public ActionResult<IEnumerable<Appointment>> GetAllAppointment(string doctorId)
         {
@@ -32,7 +32,7 @@ namespace AppointmentAPI.Controllers
             return appointments;
         }
 
-        // GET: /Appointment/5
+        // GET: /appointment/pregled1
         [HttpGet("appointment/{id}")]
         public ActionResult<Appointment> Get(string id)
         {
@@ -44,7 +44,7 @@ namespace AppointmentAPI.Controllers
             return appointment;
         }
 
-        // POST: /Appointment
+        // POST: /appointment
         [HttpPost("appointment")]
         public void Post([FromBody]Appointment appointment)
         {
@@ -54,7 +54,7 @@ namespace AppointmentAPI.Controllers
             cache.SortedSetAddAsync("SortedSet" + appointment.DoctorId, appointment.AppointmentId, appointment.StartTime);
         }
 
-        // PUT: /Appointment/5
+        // PUT: /appointment/pregled1
         [HttpPut("appointment/{id}")]
         public void Put(string id, [FromBody]Appointment appointment)
         {
@@ -64,7 +64,7 @@ namespace AppointmentAPI.Controllers
             cache.SortedSetAddAsync("SortedSet" + appointment.DoctorId, appointment.AppointmentId, appointment.StartTime);
         }
 
-        // DELETE: /Appointment/5
+        // DELETE: /appointment/pregled1/doctor/doktor1
         [HttpDelete("appointment/{id}/doctor/{doctorId}")]
         public void Delete(string id, string doctorId)
         {

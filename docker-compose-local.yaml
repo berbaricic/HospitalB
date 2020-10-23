@@ -2,19 +2,22 @@ version: '3.8'
 
 services:
   database:
-    image: "doc2210/mssql:sqlatest"
+    build: 
+      context: .
+      dockerfile: ./MSSQL/Dockerfile
     restart: always
     container_name: database
     ports:
-      - "1433:1433" 
+      - "1433:1433"    
     volumes: 
-      - ./MSSQL/sqldata:/var/opt/mssql/data     
+      - ./MSSQL/sqldata:/var/opt/mssql/data 
  
   appointmentapi:
-    image: "doc2210/appointmentapi:latest"
+    build: 
+      context: .
+      dockerfile: ./AppointmentAPI/Dockerfile 
     container_name: appointmentapi
-    expose: 
-      - "443"
+    restart: always
     depends_on:
       - redis
       - database
@@ -39,5 +42,5 @@ services:
     environment:
       - RABBITMQ_DEFAULT_USER=user
       - RABBITMQ_DEFAULT_PASS=password 
-  
+
     
