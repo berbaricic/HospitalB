@@ -43,4 +43,14 @@ services:
       - RABBITMQ_DEFAULT_USER=user
       - RABBITMQ_DEFAULT_PASS=password 
 
+  hangfire:
+    build:
+      context: .
+      dockerfile: ./HangfireServer/Dockerfile
+    container_name: hangfire
+    restart: on-failure
+    depends_on:
+      - redis
+      - database
+
     

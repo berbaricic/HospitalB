@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentAPI", "AppointmentAPI\AppointmentAPI.csproj", "{B2A103A3-53EA-4E1F-B6EE-A8D114424374}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppointmentLibrary", "Appointment\AppointmentLibrary.csproj", "{BF225E7B-CA9E-484E-B8D1-78B245A7791F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentLibrary", "Appointment\AppointmentLibrary.csproj", "{BF225E7B-CA9E-484E-B8D1-78B245A7791F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HangfireServer", "HangfireServer\HangfireServer.csproj", "{61EDED4A-309D-4D2A-AD6E-B387F959C1CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{BF225E7B-CA9E-484E-B8D1-78B245A7791F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF225E7B-CA9E-484E-B8D1-78B245A7791F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF225E7B-CA9E-484E-B8D1-78B245A7791F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61EDED4A-309D-4D2A-AD6E-B387F959C1CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61EDED4A-309D-4D2A-AD6E-B387F959C1CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61EDED4A-309D-4D2A-AD6E-B387F959C1CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61EDED4A-309D-4D2A-AD6E-B387F959C1CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
