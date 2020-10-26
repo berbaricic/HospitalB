@@ -9,10 +9,10 @@ CREATE TABLE [Appointment](
 	[AppointmentId] [varchar](50) NOT NULL,
 	[DoctorId] [varchar](max) NOT NULL,
 	[Patient] [varchar](max) NULL,
-	[StartTime] [int](max) NOT NULL,
-	[EndTime] [int] NOT NULL,
+	[StartTime] [int] NOT NULL,
+	[EndTime] [int] NULL,
 	[RealEndTime] [int] NULL,
-	[JobStatus] [varchar](max) NULL,
+	[AppointmentStatus] [varchar](max) NULL,
  CONSTRAINT [PK_Session] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC

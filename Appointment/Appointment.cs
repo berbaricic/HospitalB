@@ -11,7 +11,7 @@ namespace AppointmentLibrary
         public string Patient { get; set; }
         public int StartTime { get; set; }
         public int EndTime { get; set; }
-        public int RealEndTime { get; set; }
+        public int? RealEndTime { get; set; }
         public string AppointmentStatus { get; set; }
     }
 }

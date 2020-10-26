@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using AppointmentLibrary;
+using Hangfire;
+using HangfireWorker;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using StackExchange.Redis;
@@ -10,10 +12,12 @@ namespace AppointmentAPI.Controllers
     public class AppointmentController : ControllerBase
     {
         private readonly IDatabase cache;
+        private readonly IBackgroundJobClient backgroundJobClient;
 
-        public AppointmentController(IDatabase cache)
+        public AppointmentController(IDatabase cache, IBackgroundJobClient backgroundJobClient)
         {
             this.cache = cache;
+            this.backgroundJobClient = backgroundJobClient;
         }
 
         // GET: /appointment/doctor/doktor1
@@ -49,7 +53,6 @@ namespace AppointmentAPI.Controllers
         public void Post([FromBody]Appointment appointment)
         {
             var key = RedisStore.GetRedisKey(appointment.AppointmentId);
-            //save object in Key-Value pairs and SortedSet
             cache.StringSetAsync(key, JsonConvert.SerializeObject(appointment));
             cache.SortedSetAddAsync("SortedSet" + appointment.DoctorId, appointment.AppointmentId, appointment.StartTime);
         }
@@ -59,9 +62,30 @@ namespace AppointmentAPI.Controllers
         public void Put(string id, [FromBody]Appointment appointment)
         {
             var key = RedisStore.GetRedisKey(id);
-            //save object in Key-Value pairs and SortedSet
             cache.StringSetAsync(key, JsonConvert.SerializeObject(appointment));
             cache.SortedSetAddAsync("SortedSet" + appointment.DoctorId, appointment.AppointmentId, appointment.StartTime);
+            
+            //ako je stvarno završno vrijeme zabilježeno, i status postavljen na DONE
+            if (appointment.RealEndTime != null && appointment.AppointmentStatus == "DONE")
+            {
+                //ako je kašnjenje veće od 10 minuta
+                if ((appointment.RealEndTime - appointment.EndTime) > 600)
+                {
+                    //preraspodjela termina nakon kašnjenja
+                    var jobId = backgroundJobClient.Enqueue<HangfireJob>(worker => worker.RedistributionJob(appointment));
+                    //perzistencija termina u bazu nakon što su obavljeni
+                    backgroundJobClient.ContinueJobWith<HangfireJob>(jobId, worker => worker.PersistDataToDatabaseJob(appointment));
+                    //brisanje iz cache-a
+                    cache.KeyDelete(key);
+                    cache.SortedSetRemove("SortedSet" + appointment.DoctorId, id);
+                }
+                //ako nema kašnjenja ili je manje od 10 minuta
+                else
+                {
+                    //perzistencija termina u bazu nakon što su obavljeni
+                    backgroundJobClient.Enqueue<HangfireJob>(worker => worker.PersistDataToDatabaseJob(appointment));
+                }
+            }
         }
 
         // DELETE: /appointment/pregled1/doctor/doktor1

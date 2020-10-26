@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Hangfire.AspNetCore" Version="1.7.17" />
+    <PackageReference Include="Hangfire.SqlServer" Version="1.7.17" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
     <PackageReference Include="StackExchange.Redis" Version="2.1.58" />
@@ -14,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Appointment\AppointmentLibrary.csproj" />
+    <ProjectReference Include="..\HangfireWorkerLibrary\HangfireWorker.csproj" />
   </ItemGroup>
 
 

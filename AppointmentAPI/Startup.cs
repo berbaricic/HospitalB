@@ -1,16 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AppointmentLibrary;
+using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
+using HangfireWorker;
+using HangfireWorker.SQLDatabase;
 
 namespace AppointmentAPI
 {
@@ -30,6 +27,14 @@ namespace AppointmentAPI
             var options = ConfigurationOptions.Parse(configString);
             IConnectionMultiplexer redis = ConnectionMultiplexer.Connect(options);
             services.AddScoped(s => redis.GetDatabase());
+
+            services.AddTransient<ISqlDatabaseConnection,SqlDatabaseConnection>();
+
+            services.AddHangfire(configuration => configuration
+                .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+                .UseSimpleAssemblyNameTypeSerializer()
+                .UseRecommendedSerializerSettings()
+                .UseSqlServerStorage(Configuration.GetConnectionString("HangfireConnection")));
 
             services.AddControllers();
         }
@@ -51,6 +56,12 @@ namespace AppointmentAPI
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions()
+            {
+                Authorization = new[] { new MyAuthorizationFilter() },
+                IgnoreAntiforgeryToken = true
             });
         }
     }

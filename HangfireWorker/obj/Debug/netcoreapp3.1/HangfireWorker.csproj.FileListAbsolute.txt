@@ -1,0 +1,12 @@
+D:\Programiranje\CS Internship\HospitalB\HangfireWorkerLibrary\bin\Debug\netcoreapp3.1\HangfireWorker.deps.json
+D:\Programiranje\CS Internship\HospitalB\HangfireWorkerLibrary\bin\Debug\netcoreapp3.1\HangfireWorker.dll
+D:\Programiranje\CS Internship\HospitalB\HangfireWorkerLibrary\obj\Debug\netcoreapp3.1\HangfireWorker.csprojAssemblyReference.cache
+D:\Programiranje\CS Internship\HospitalB\HangfireWorkerLibrary\obj\Debug\netcoreapp3.1\HangfireWorker.AssemblyInfoInputs.cache
+D:\Programiranje\CS Internship\HospitalB\HangfireWorkerLibrary\obj\Debug\netcoreapp3.1\HangfireWorker.AssemblyInfo.cs
+D:\Programiranje\CS Internship\HospitalB\HangfireWorkerLibrary\bin\Debug\netcoreapp3.1\AppointmentLibrary.dll
+D:\Programiranje\CS Internship\HospitalB\HangfireWorkerLibrary\bin\Debug\netcoreapp3.1\AppointmentLibrary.pdb
+D:\Programiranje\CS Internship\HospitalB\HangfireWorkerLibrary\obj\Debug\netcoreapp3.1\HangfireWorker.csproj.CopyComplete
+D:\Programiranje\CS Internship\HospitalB\HangfireWorkerLibrary\bin\Debug\netcoreapp3.1\HangfireWorker.pdb
+D:\Programiranje\CS Internship\HospitalB\HangfireWorkerLibrary\obj\Debug\netcoreapp3.1\HangfireWorker.csproj.CoreCompileInputs.cache
+D:\Programiranje\CS Internship\HospitalB\HangfireWorkerLibrary\obj\Debug\netcoreapp3.1\HangfireWorker.dll
+D:\Programiranje\CS Internship\HospitalB\HangfireWorkerLibrary\obj\Debug\netcoreapp3.1\HangfireWorker.pdb
