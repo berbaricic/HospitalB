@@ -1,6 +1,7 @@
 CREATE DATABASE HospitalBDatabase;
 GO
-
+CREATE DATABASE HangfireDatabase;
+GO
 USE HospitalBDatabase;
 GO
 
