@@ -38,13 +38,13 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "Hangfire.AspNetCore": {
-              "target": "Package",
-              "version": "[1.7.17, )"
-            },
             "Hangfire.SqlServer": {
               "target": "Package",
               "version": "[1.7.17, )"
+            },
+            "Microsoft.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[3.1.9, )"
             },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
@@ -62,9 +62,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
