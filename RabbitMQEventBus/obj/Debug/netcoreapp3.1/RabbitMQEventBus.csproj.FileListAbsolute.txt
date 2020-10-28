@@ -1,0 +1,5 @@
+D:\Programiranje\CS Internship\HospitalB\RabbitMQEventBus\bin\Debug\netcoreapp3.1\RabbitMQEventBus.deps.json
+D:\Programiranje\CS Internship\HospitalB\RabbitMQEventBus\bin\Debug\netcoreapp3.1\RabbitMQEventBus.dll
+D:\Programiranje\CS Internship\HospitalB\RabbitMQEventBus\obj\Debug\netcoreapp3.1\RabbitMQEventBus.csprojAssemblyReference.cache
+D:\Programiranje\CS Internship\HospitalB\RabbitMQEventBus\obj\Debug\netcoreapp3.1\RabbitMQEventBus.AssemblyInfoInputs.cache
+D:\Programiranje\CS Internship\HospitalB\RabbitMQEventBus\obj\Debug\netcoreapp3.1\RabbitMQEventBus.AssemblyInfo.cs

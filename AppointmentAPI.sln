@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HangfireServer", "HangfireS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIAppointment", "APIAppointment\APIAppointment.csproj", "{1F8FDE37-569C-41F0-A199-A4967A4AF202}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQEventBus", "RabbitMQEventBus\RabbitMQEventBus.csproj", "{CF6931F5-337D-4787-AA18-A3BFB014C4E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{1F8FDE37-569C-41F0-A199-A4967A4AF202}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F8FDE37-569C-41F0-A199-A4967A4AF202}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F8FDE37-569C-41F0-A199-A4967A4AF202}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF6931F5-337D-4787-AA18-A3BFB014C4E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF6931F5-337D-4787-AA18-A3BFB014C4E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF6931F5-337D-4787-AA18-A3BFB014C4E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF6931F5-337D-4787-AA18-A3BFB014C4E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
