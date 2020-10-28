@@ -12,7 +12,7 @@ CREATE PROCEDURE [dbo].[PersistAppointment_StoredProcedure]
 AS
 BEGIN TRY
 	BEGIN TRANSACTION
-	INSERT INTO Session VALUES (@AppointmentId, @DoctorId, @Patient, @StartTime, @EndTime, @RealEndTime, @AppointmentStatus);
+	INSERT INTO Appointment VALUES (@AppointmentId, @DoctorId, @Patient, @StartTime, @EndTime, @RealEndTime, @AppointmentStatus);
 	COMMIT TRANSACTION
 END TRY
 BEGIN CATCH

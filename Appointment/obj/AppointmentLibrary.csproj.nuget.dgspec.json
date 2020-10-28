@@ -40,7 +40,7 @@
           "dependencies": {
             "Hangfire.Core": {
               "target": "Package",
-              "version": "[1.7.17, )"
+              "version": "[1.7.15, )"
             }
           },
           "imports": [

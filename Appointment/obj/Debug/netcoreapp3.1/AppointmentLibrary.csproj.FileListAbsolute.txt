@@ -1,9 +1,5 @@
 D:\Programiranje\CS Internship\HospitalB\Appointment\bin\Debug\netcoreapp3.1\AppointmentLibrary.deps.json
 D:\Programiranje\CS Internship\HospitalB\Appointment\bin\Debug\netcoreapp3.1\AppointmentLibrary.dll
-D:\Programiranje\CS Internship\HospitalB\Appointment\bin\Debug\netcoreapp3.1\AppointmentLibrary.pdb
+D:\Programiranje\CS Internship\HospitalB\Appointment\obj\Debug\netcoreapp3.1\AppointmentLibrary.csprojAssemblyReference.cache
 D:\Programiranje\CS Internship\HospitalB\Appointment\obj\Debug\netcoreapp3.1\AppointmentLibrary.AssemblyInfoInputs.cache
 D:\Programiranje\CS Internship\HospitalB\Appointment\obj\Debug\netcoreapp3.1\AppointmentLibrary.AssemblyInfo.cs
-D:\Programiranje\CS Internship\HospitalB\Appointment\obj\Debug\netcoreapp3.1\AppointmentLibrary.dll
-D:\Programiranje\CS Internship\HospitalB\Appointment\obj\Debug\netcoreapp3.1\AppointmentLibrary.pdb
-D:\Programiranje\CS Internship\HospitalB\Appointment\obj\Debug\netcoreapp3.1\AppointmentLibrary.csprojAssemblyReference.cache
-D:\Programiranje\CS Internship\HospitalB\Appointment\obj\Debug\netcoreapp3.1\AppointmentLibrary.csproj.CoreCompileInputs.cache

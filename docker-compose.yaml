@@ -2,22 +2,27 @@ version: '3.8'
 
 services:
   database:
-    image: "doc2210/mssqlserver:latest"
+    build: 
+      context: .
+      dockerfile: ./MSSQL/Dockerfile
     restart: always
     container_name: database
     ports:
-      - "1433:1433" 
+      - "1433:1433"  
+    expose: 
+      - 1433
     volumes: 
-      - ./MSSQL/sqldata:/var/opt/mssql/data     
+      - ./MSSQL/sqldata:/var/opt/mssql/data 
  
   appointmentapi:
-    image: "doc2210/appointmentapi:latest"
+    build: 
+      context: .
+      dockerfile: ./APIAppointment/Dockerfile 
     container_name: appointmentapi
-    expose: 
-      - "443"
+    restart: on-failure
     depends_on:
-      - redis
       - database
+      - redis
     ports:
       - "5000:80"
       - "5001:5001"
@@ -27,6 +32,16 @@ services:
     container_name: redis
     ports:
       - "6379:6379" 
+
+  hangfire:
+    build:
+      context: .
+      dockerfile: ./HangfireServer/Dockerfile
+    container_name: hangfire
+    restart: on-failure
+    depends_on:
+      - database
+      - redis
 
   rabbitmq:
     image: "rabbitmq:3-management"
@@ -40,12 +55,4 @@ services:
       - RABBITMQ_DEFAULT_USER=user
       - RABBITMQ_DEFAULT_PASS=password 
 
-  hangfire:
-    image: "doc2210/hangfireserver:latest"
-    container_name: hangfire
-    restart: on-failure
-    depends_on:
-      - redis
-      - database
-  
     

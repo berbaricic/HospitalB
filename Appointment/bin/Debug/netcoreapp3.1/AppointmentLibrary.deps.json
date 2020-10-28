@@ -7,62 +7,8 @@
   "targets": {
     ".NETCoreApp,Version=v3.1": {
       "AppointmentLibrary/1.0.0": {
-        "dependencies": {
-          "Hangfire.Core": "1.7.17"
-        },
         "runtime": {
           "AppointmentLibrary.dll": {}
-        }
-      },
-      "Hangfire.Core/1.7.17": {
-        "dependencies": {
-          "Newtonsoft.Json": "11.0.1"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Hangfire.Core.dll": {
-            "assemblyVersion": "1.7.17.0",
-            "fileVersion": "1.7.17.0"
-          }
-        },
-        "resources": {
-          "lib/netstandard2.0/ca/Hangfire.Core.resources.dll": {
-            "locale": "ca"
-          },
-          "lib/netstandard2.0/es/Hangfire.Core.resources.dll": {
-            "locale": "es"
-          },
-          "lib/netstandard2.0/fa/Hangfire.Core.resources.dll": {
-            "locale": "fa"
-          },
-          "lib/netstandard2.0/fr/Hangfire.Core.resources.dll": {
-            "locale": "fr"
-          },
-          "lib/netstandard2.0/nl/Hangfire.Core.resources.dll": {
-            "locale": "nl"
-          },
-          "lib/netstandard2.0/pt-BR/Hangfire.Core.resources.dll": {
-            "locale": "pt-BR"
-          },
-          "lib/netstandard2.0/pt-PT/Hangfire.Core.resources.dll": {
-            "locale": "pt-PT"
-          },
-          "lib/netstandard2.0/pt/Hangfire.Core.resources.dll": {
-            "locale": "pt"
-          },
-          "lib/netstandard2.0/zh-TW/Hangfire.Core.resources.dll": {
-            "locale": "zh-TW"
-          },
-          "lib/netstandard2.0/zh/Hangfire.Core.resources.dll": {
-            "locale": "zh"
-          }
-        }
-      },
-      "Newtonsoft.Json/11.0.1": {
-        "runtime": {
-          "lib/netstandard2.0/Newtonsoft.Json.dll": {
-            "assemblyVersion": "11.0.0.0",
-            "fileVersion": "11.0.1.21818"
-          }
         }
       }
     }
@@ -72,20 +18,6 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
-    },
-    "Hangfire.Core/1.7.17": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-xLu0FbSs3SUB/1MEWlXfPKkt+IuykLFqZhCkVH4lqNJoC8SkIXu3qxWEBLUm9IYqfpZZhFZkcBgfPdEeOQDjLg==",
-      "path": "hangfire.core/1.7.17",
-      "hashPath": "hangfire.core.1.7.17.nupkg.sha512"
-    },
-    "Newtonsoft.Json/11.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-pNN4l+J6LlpIvHOeNdXlwxv39NPJ2B5klz+Rd2UQZIx30Squ5oND1Yy3wEAUoKn0GPUj6Yxt9lxlYWQqfZcvKg==",
-      "path": "newtonsoft.json/11.0.1",
-      "hashPath": "newtonsoft.json.11.0.1.nupkg.sha512"
     }
   }
 }

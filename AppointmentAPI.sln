@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentAPI", "AppointmentAPI\AppointmentAPI.csproj", "{B2A103A3-53EA-4E1F-B6EE-A8D114424374}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppointmentLibrary", "Appointment\AppointmentLibrary.csproj", "{BF225E7B-CA9E-484E-B8D1-78B245A7791F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HangfireServer", "HangfireServer\HangfireServer.csproj", "{61EDED4A-309D-4D2A-AD6E-B387F959C1CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HangfireWorker", "HangfireWorkerLibrary\HangfireWorker.csproj", "{F59F0A08-969F-4C7C-80AF-D4A01379A7FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HangfireWorker", "HangfireWorkerLibrary\HangfireWorker.csproj", "{F59F0A08-969F-4C7C-80AF-D4A01379A7FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HangfireServer", "HangfireServer\HangfireServer.csproj", "{0AE0EE33-8D0F-4C02-8EC7-6881F516A153}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIAppointment", "APIAppointment\APIAppointment.csproj", "{1F8FDE37-569C-41F0-A199-A4967A4AF202}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,22 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B2A103A3-53EA-4E1F-B6EE-A8D114424374}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B2A103A3-53EA-4E1F-B6EE-A8D114424374}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B2A103A3-53EA-4E1F-B6EE-A8D114424374}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B2A103A3-53EA-4E1F-B6EE-A8D114424374}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BF225E7B-CA9E-484E-B8D1-78B245A7791F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BF225E7B-CA9E-484E-B8D1-78B245A7791F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF225E7B-CA9E-484E-B8D1-78B245A7791F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF225E7B-CA9E-484E-B8D1-78B245A7791F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{61EDED4A-309D-4D2A-AD6E-B387F959C1CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{61EDED4A-309D-4D2A-AD6E-B387F959C1CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{61EDED4A-309D-4D2A-AD6E-B387F959C1CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{61EDED4A-309D-4D2A-AD6E-B387F959C1CC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F59F0A08-969F-4C7C-80AF-D4A01379A7FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F59F0A08-969F-4C7C-80AF-D4A01379A7FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F59F0A08-969F-4C7C-80AF-D4A01379A7FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F59F0A08-969F-4C7C-80AF-D4A01379A7FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AE0EE33-8D0F-4C02-8EC7-6881F516A153}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AE0EE33-8D0F-4C02-8EC7-6881F516A153}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AE0EE33-8D0F-4C02-8EC7-6881F516A153}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AE0EE33-8D0F-4C02-8EC7-6881F516A153}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F8FDE37-569C-41F0-A199-A4967A4AF202}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F8FDE37-569C-41F0-A199-A4967A4AF202}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F8FDE37-569C-41F0-A199-A4967A4AF202}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F8FDE37-569C-41F0-A199-A4967A4AF202}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

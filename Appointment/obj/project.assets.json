@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "Hangfire.Core/1.7.17": {
+      "Hangfire.Core/1.7.15": {
         "type": "package",
         "dependencies": {
           "Newtonsoft.Json": "11.0.1"
@@ -58,10 +58,10 @@
     }
   },
   "libraries": {
-    "Hangfire.Core/1.7.17": {
-      "sha512": "xLu0FbSs3SUB/1MEWlXfPKkt+IuykLFqZhCkVH4lqNJoC8SkIXu3qxWEBLUm9IYqfpZZhFZkcBgfPdEeOQDjLg==",
+    "Hangfire.Core/1.7.15": {
+      "sha512": "SB1A1rPejQBISlXenetNtjhRkVOkD6RxPR6RuCyLsh20FKnk0lTyufD39QCvJzVoGtmMlLA/oOJPYbOMCMtJGw==",
       "type": "package",
-      "path": "hangfire.core/1.7.17",
+      "path": "hangfire.core/1.7.15",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -71,7 +71,7 @@
         "LICENSE_ROYALTYFREE",
         "LICENSE_STANDARD",
         "NOTICES",
-        "hangfire.core.1.7.17.nupkg.sha512",
+        "hangfire.core.1.7.15.nupkg.sha512",
         "hangfire.core.nuspec",
         "lib/net45/Hangfire.Core.dll",
         "lib/net45/Hangfire.Core.xml",
@@ -156,7 +156,7 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Hangfire.Core >= 1.7.17"
+      "Hangfire.Core >= 1.7.15"
     ]
   },
   "packageFolders": {
@@ -198,7 +198,7 @@
         "dependencies": {
           "Hangfire.Core": {
             "target": "Package",
-            "version": "[1.7.17, )"
+            "version": "[1.7.15, )"
           }
         },
         "imports": [

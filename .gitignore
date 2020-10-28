@@ -1,3 +1,4 @@
-/AppointmentAPI/bin/
+/APIApointment/bin/
 /Appointment/obj/
 /HangfireServer/obj/
+/HangfireServer/bin/Debug/

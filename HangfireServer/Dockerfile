@@ -6,6 +6,8 @@ WORKDIR /app
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
 COPY ["HangfireServer/HangfireServer.csproj", "HangfireServer/"]
+COPY ["HangfireWorkerLibrary/HangfireWorker.csproj", "HangfireWorkerLibrary/"]
+COPY ["Appointment/AppointmentLibrary.csproj", "Appointment/"]
 RUN dotnet restore "HangfireServer/HangfireServer.csproj"
 COPY . .
 WORKDIR "/src/HangfireServer"

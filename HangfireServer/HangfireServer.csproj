@@ -7,9 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.0.0" />
+    <PackageReference Include="HangFire.Autofac" Version="2.3.1" />
+    <PackageReference Include="Hangfire.Core" Version="1.7.17" />
     <PackageReference Include="Hangfire.SqlServer" Version="1.7.17" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.9" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HangfireWorkerLibrary\HangfireWorker.csproj" />
   </ItemGroup>
 
 </Project>
