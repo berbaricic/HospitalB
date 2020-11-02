@@ -3,3 +3,7 @@ D:\Programiranje\CS Internship\HospitalB\RabbitMQEventBus\bin\Debug\netcoreapp3.
 D:\Programiranje\CS Internship\HospitalB\RabbitMQEventBus\obj\Debug\netcoreapp3.1\RabbitMQEventBus.csprojAssemblyReference.cache
 D:\Programiranje\CS Internship\HospitalB\RabbitMQEventBus\obj\Debug\netcoreapp3.1\RabbitMQEventBus.AssemblyInfoInputs.cache
 D:\Programiranje\CS Internship\HospitalB\RabbitMQEventBus\obj\Debug\netcoreapp3.1\RabbitMQEventBus.AssemblyInfo.cs
+D:\Programiranje\CS Internship\HospitalB\RabbitMQEventBus\bin\Debug\netcoreapp3.1\RabbitMQEventBus.pdb
+D:\Programiranje\CS Internship\HospitalB\RabbitMQEventBus\obj\Debug\netcoreapp3.1\RabbitMQEventBus.csproj.CoreCompileInputs.cache
+D:\Programiranje\CS Internship\HospitalB\RabbitMQEventBus\obj\Debug\netcoreapp3.1\RabbitMQEventBus.dll
+D:\Programiranje\CS Internship\HospitalB\RabbitMQEventBus\obj\Debug\netcoreapp3.1\RabbitMQEventBus.pdb

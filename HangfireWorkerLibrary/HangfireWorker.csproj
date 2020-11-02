@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Appointment\AppointmentLibrary.csproj" />
+    <ProjectReference Include="..\RabbitMQEventBus\RabbitMQEventBus.csproj" />
   </ItemGroup>
 
 </Project>

@@ -62,6 +62,7 @@ namespace APIAppointment.Controllers
             var key = RedisStore.GetRedisKey(id);
             cache.StringSetAsync(key, JsonConvert.SerializeObject(appointment));
             cache.SortedSetAddAsync("SortedSet" + appointment.DoctorId, appointment.AppointmentId, appointment.StartTime);
+
             //ako je stvarno završno vrijeme zabilježeno, i status postavljen na DONE
             if (appointment.RealEndTime != null && appointment.AppointmentStatus == "DONE")
             {
@@ -69,9 +70,9 @@ namespace APIAppointment.Controllers
                 if ((appointment.RealEndTime - appointment.EndTime) > 600)
                 {
                     //preraspodjela termina nakon kašnjenja
-                    var jobId = BackgroundJob.Enqueue<HangfireJobForAppointments>(worker => worker.RedistributionJob(appointment));
+                    var jobId = BackgroundJob.Enqueue<HangfireJobForCache>(worker => worker.RedistributionJob(appointment));
                     //perzistencija termina u bazu nakon što su obavljeni
-                    BackgroundJob.ContinueJobWith<HangfireJobForAppointments>(jobId, worker => worker.PersistDataToDatabaseJob(appointment));
+                    BackgroundJob.ContinueJobWith<HangfireJobForDatabase>(jobId, worker => worker.PersistDataToDatabaseJob(appointment));
                     //brisanje iz cache-a
                     cache.KeyDelete(key);
                     cache.SortedSetRemove("SortedSet" + appointment.DoctorId, id);
@@ -82,7 +83,7 @@ namespace APIAppointment.Controllers
                     cache.KeyDelete(key);
                     cache.SortedSetRemove("SortedSet" + appointment.DoctorId, id);
                     //perzistencija termina u bazu nakon što su obavljeni
-                    BackgroundJob.Enqueue<HangfireJobForAppointments>(worker => worker.PersistDataToDatabaseJob(appointment));
+                    BackgroundJob.Enqueue<HangfireJobForDatabase>(worker => worker.PersistDataToDatabaseJob(appointment));
                 }
             }
         }

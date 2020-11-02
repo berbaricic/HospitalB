@@ -12,7 +12,7 @@ using System.Text;
 
 namespace RabbitMQEventBus
 {
-    public class DefaultRabbitMqPersistentConnection : IRabbitMqPersistConnection
+    public class DefaultRabbitMqPersistentConnection : IRabbitMqPersistentConnection
     {
         private readonly IConnectionFactory _connectionFactory;
         private readonly ILogger<DefaultRabbitMqPersistentConnection> _logger;
@@ -21,11 +21,11 @@ namespace RabbitMQEventBus
         bool _disposed;
 
         object sync_root = new object();
-        public DefaultRabbitMqPersistentConnection(IConnectionFactory connectionFactory, ILogger<DefaultRabbitMqPersistentConnection> logger, int retryCount = 5)
-        {
-            this._connectionFactory = connectionFactory;
+        public DefaultRabbitMqPersistentConnection(ILogger<DefaultRabbitMqPersistentConnection> logger, IConnectionFactory connectionFactory)
+        {          
             this._logger = logger;
-            _retryCount = retryCount;
+            this._connectionFactory = connectionFactory;
+            _retryCount = 5;
         }
 
         public bool IsConnected

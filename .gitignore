@@ -3,3 +3,5 @@
 /HangfireServer/obj/
 /HangfireServer/bin/Debug/
 /HangfireWorkerLibrary/obj/
+/RabbitMQEventBus/obj/
+/RabbitMQEventBus/bin/
