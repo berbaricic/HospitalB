@@ -14,10 +14,11 @@ namespace RedisTestingProject
 
             Appointment appointment;
 
-            int startTime = (int)new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds();
+            int startTime;
 
             for (int d = 1; d <= 100; d++)
             {
+                startTime = (int)new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds();
                 for (int a = 1; a <= 15; a++)
                 {
                     if (a != 7)
@@ -44,6 +45,7 @@ namespace RedisTestingProject
                     }
                 }
             }
+            Console.ReadLine();
         }
     }
 }
