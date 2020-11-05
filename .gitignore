@@ -5,5 +5,3 @@
 /HangfireWorkerLibrary/obj/
 /RabbitMQEventBus/obj/
 /RabbitMQEventBus/bin/
-/MSSQL/sqldata/HangfireDatabase.mdf
-/MSSQL/sqldata/HangfireDatabase_log.ldf
