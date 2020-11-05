@@ -1,10 +1,14 @@
 ﻿using AppointmentLibrary;
+using Dapper;
 using Hangfire;
+using HangfireWorker.SQLDatabase;
 using Newtonsoft.Json;
 using RabbitMQEventBus;
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 using System.Text;
 
 namespace HangfireWorker
@@ -12,38 +16,56 @@ namespace HangfireWorker
     public class HangfireJobForCache
     {
         private readonly IDatabase cache;
-        private readonly IEventBus eventBus;
 
-        public HangfireJobForCache(IEventBus eventBus)
+        public HangfireJobForCache(IDatabase cache)
         {
-            IConnectionMultiplexer redis = ConnectionMultiplexer.Connect("redis");
-            cache = redis.GetDatabase();
-            this.eventBus = eventBus;
+            this.cache = cache;
         }
-        [DisableConcurrentExecution(timeoutInSeconds: 15)]
-        public void RedistributionJob(Appointment appointment)
+
+        public void RedistributionJob()
         {
-            int delay;
-            RedisValue[] appointments = cache.SortedSetRangeByScore("SortedSet" + appointment.DoctorId, start: appointment.StartTime + 1);
+            int timestampCheck;
+            int delayOfFirstAppointment;
+            int delayToSend;
 
-            var endTimeOfLastAppointment = Convert.ToInt32(appointment.RealEndTime);
+            RedisValue[] doctors = cache.SetMembers("DoctorsList");
+            timestampCheck = (int)new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds();
 
-            foreach (var item in appointments)
+            foreach (var doctor in doctors)
             {
-                var key = RedisStore.GetRedisKey(item);
-                var redisValue = cache.StringGet(key);
-                var deserializeAppointment = JsonConvert.DeserializeObject<Appointment>(redisValue);
+                RedisValue[] appointments = cache.SortedSetRangeByScore("SortedSet" + doctor);
+                var first = appointments.First();
 
-                if (endTimeOfLastAppointment > deserializeAppointment.StartTime)
+                var keyFirst = RedisStore.GetRedisKey(doctor, first);
+                var redisValueFirst = cache.StringGet(keyFirst);
+                var firstAppointment = JsonConvert.DeserializeObject<Appointment>(redisValueFirst);
+
+                delayOfFirstAppointment = timestampCheck - firstAppointment.EndTime;
+                
+                //ako je kašnjenje veće od 10 minuta --> za test ide 1 minuta
+                if (delayOfFirstAppointment > 60)
                 {
-                    delay = endTimeOfLastAppointment - deserializeAppointment.StartTime;
-                    deserializeAppointment.EndTime = deserializeAppointment.EndTime + delay;
-                    deserializeAppointment.StartTime = endTimeOfLastAppointment;
-                    endTimeOfLastAppointment = deserializeAppointment.EndTime;
-                    cache.StringSetAsync(key, JsonConvert.SerializeObject(deserializeAppointment));
+                    RedisValue[] appointmentsWithoutFirst = cache.SortedSetRangeByScore("SortedSet" + doctor, start: firstAppointment.StartTime + 1);
 
-                    IntegrationEvent appointmentDelayEvent = new AppointmentDelayIntegrationEvent(delay);
-                    eventBus.Publish(appointmentDelayEvent);
+                    foreach (var appointment in appointmentsWithoutFirst)
+                    {
+                        var keyAnother = RedisStore.GetRedisKey(doctor, appointment);
+                        var redisValueAnother = cache.StringGet(keyAnother);
+                        var deserializeAppointment = JsonConvert.DeserializeObject<Appointment>(redisValueAnother);
+
+                        if (timestampCheck > deserializeAppointment.StartTime)
+                        {
+                            delayToSend = timestampCheck - deserializeAppointment.StartTime;
+                            deserializeAppointment.StartTime = timestampCheck;
+                            deserializeAppointment.EndTime = deserializeAppointment.EndTime + delayToSend;
+                            timestampCheck = deserializeAppointment.EndTime;
+
+                            cache.SortedSetAdd("SortedSet" + doctor, appointment, deserializeAppointment.StartTime);
+                            cache.StringSetAsync(keyAnother, JsonConvert.SerializeObject(deserializeAppointment));
+
+                            BackgroundJob.Enqueue<HangfireJobEventSender>(worker => worker.SendEvent(delayToSend));
+                        }
+                    }
                 }
             }
         }

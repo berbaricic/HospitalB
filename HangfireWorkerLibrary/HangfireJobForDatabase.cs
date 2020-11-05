@@ -1,5 +1,6 @@
 ﻿using AppointmentLibrary;
 using Dapper;
+using Hangfire;
 using HangfireWorker.SQLDatabase;
 using Newtonsoft.Json;
 using RabbitMQEventBus;

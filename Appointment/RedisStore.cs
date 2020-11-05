@@ -6,9 +6,9 @@ namespace AppointmentLibrary
 {
     public class RedisStore
     {
-        public static string GetRedisKey(string id)
+        public static string GetRedisKey(string doctorId, string id)
         {
-            return $"appointment:{id}";
+            return $"doctor:{doctorId}/appointment:{id}";
         }
     }
 }

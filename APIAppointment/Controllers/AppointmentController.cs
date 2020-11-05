@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AppointmentLibrary;
 using Hangfire;
 using HangfireWorker;
@@ -24,21 +25,21 @@ namespace APIAppointment.Controllers
         {
             List<Appointment> appointments = new List<Appointment>();
             RedisValue[] allAppointments = cache.SortedSetRangeByScore("SortedSet" + doctorId);
-            foreach (var item in allAppointments)
+            foreach (var appointment in allAppointments)
             {
-                var key = RedisStore.GetRedisKey(item);
+                var key = RedisStore.GetRedisKey(doctorId, appointment);
                 var redisValue = cache.StringGet(key);
-                var appointment = JsonConvert.DeserializeObject<Appointment>(redisValue);
-                appointments.Add(appointment);
+                var desAppointment = JsonConvert.DeserializeObject<Appointment>(redisValue);
+                appointments.Add(desAppointment);
             }
             return appointments;
         }
 
-        // GET: /appointment/pregled1
-        [HttpGet("appointment/{id}")]
-        public ActionResult<Appointment> Get(string id)
+        // GET: doctor/doktor1/appointment/pregled1
+        [HttpGet("doctor/{doctorId}/appointment/{id}")]
+        public ActionResult<Appointment> Get(string doctorId, string id)
         {
-            var key = RedisStore.GetRedisKey(id);
+            var key = RedisStore.GetRedisKey(doctorId, id);
             //save object in Key-Value pairs and SortedSet
             var redisValue = cache.StringGet(key);
             var appointment = JsonConvert.DeserializeObject<Appointment>(redisValue);
@@ -50,64 +51,58 @@ namespace APIAppointment.Controllers
         [HttpPost("appointment")]
         public void Post([FromBody]Appointment appointment)
         {
-            var key = RedisStore.GetRedisKey(appointment.AppointmentId);
-            cache.StringSetAsync(key, JsonConvert.SerializeObject(appointment));
+            var key = RedisStore.GetRedisKey(appointment.DoctorId, appointment.AppointmentId);
+
+            cache.StringSet(key, JsonConvert.SerializeObject(appointment));
             cache.SortedSetAddAsync("SortedSet" + appointment.DoctorId, appointment.AppointmentId, appointment.StartTime);
+            cache.SetAdd("DoctorsList", appointment.DoctorId);
         }
 
-        // PUT: /appointment/pregled1
-        [HttpPut("appointment/{id}")]
-        public void Put(string id, [FromBody]Appointment appointment)
+        // PUT: doctor/doktor1/appointment/pregled1
+        [HttpPut("doctor/{doctorId}/appointment/{id}")]
+        public void Put(string doctorId, string id, [FromBody]Appointment appointment)
         {
-            var key = RedisStore.GetRedisKey(id);
-            cache.StringSetAsync(key, JsonConvert.SerializeObject(appointment));
-            cache.SortedSetAddAsync("SortedSet" + appointment.DoctorId, appointment.AppointmentId, appointment.StartTime);
+            var key = RedisStore.GetRedisKey(doctorId, id);
 
-            //ako je stvarno završno vrijeme zabilježeno, i status postavljen na DONE
+            cache.StringSet(key, JsonConvert.SerializeObject(appointment));
+            cache.SortedSetAddAsync("SortedSet" + appointment.DoctorId, appointment.AppointmentId, appointment.StartTime);
+            cache.SetAdd("DoctorsList", appointment.DoctorId);
+
             if (appointment.RealEndTime != null && appointment.AppointmentStatus == "DONE")
             {
-                //ako je kašnjenje veće od 10 minuta
-                if ((appointment.RealEndTime - appointment.EndTime) > 600)
+                //brisanje termina iz cache-a
+                cache.KeyDelete(key);
+                cache.SortedSetRemove("SortedSet" + appointment.DoctorId, id);
+                if (!cache.KeyExists("SortedSet:" + appointment.DoctorId))
                 {
-                    //preraspodjela termina nakon kašnjenja
-                    var jobId = BackgroundJob.Enqueue<HangfireJobForCache>(worker => worker.RedistributionJob(appointment));
-                    //perzistencija termina u bazu nakon što su obavljeni
-                    BackgroundJob.ContinueJobWith<HangfireJobForDatabase>(jobId, worker => worker.PersistDataToDatabaseJob(appointment));
-                    //brisanje iz cache-a
-                    cache.KeyDelete(key);
-                    cache.SortedSetRemove("SortedSet" + appointment.DoctorId, id);
+                    cache.SetRemove("DoctorsList", appointment.DoctorId);
                 }
-                //ako nema kašnjenja ili je manje od 10 minuta
-                else
-                {
-                    cache.KeyDelete(key);
-                    cache.SortedSetRemove("SortedSet" + appointment.DoctorId, id);
-                    //perzistencija termina u bazu nakon što su obavljeni
-                    BackgroundJob.Enqueue<HangfireJobForDatabase>(worker => worker.PersistDataToDatabaseJob(appointment));
-                }
+                //perzistencija termina u bazu nakon što su obavljeni
+                BackgroundJob.Enqueue<HangfireJobForDatabase>(worker => worker.PersistDataToDatabaseJob(appointment));
             }
         }
 
-        // DELETE: /appointment/pregled1/doctor/doktor1
-        [HttpDelete("appointment/{id}/doctor/{doctorId}")]
-        public void Delete(string id, string doctorId)
+        // DELETE: doctor/doktor1/appointment/pregled1
+        [HttpDelete("doctor/{doctorId}/appointment/{id}")]
+        public void Delete(string doctorId, string id)
         {
-            var key = RedisStore.GetRedisKey(id);
+            var key = RedisStore.GetRedisKey(doctorId, id);
             cache.KeyDelete(key);
-
             cache.SortedSetRemove("SortedSet" + doctorId, id);
         }
 
+        //DELETE: doctor/doktor1
         [HttpDelete("doctor/{doctorId}")]
         public void Delete(string doctorId)
         {
             List<Appointment> appointments = new List<Appointment>();
             RedisValue[] allAppointments = cache.SortedSetRangeByScore("SortedSet" + doctorId);
-            foreach (var item in allAppointments)
+            foreach (var appointment in allAppointments)
             {
-                var key = RedisStore.GetRedisKey(item);
+                var key = RedisStore.GetRedisKey(doctorId, appointment);
+                cache.SortedSetRemove("SortedSet" + doctorId, appointment);
+                cache.SetRemove("DoctorsList", doctorId);
                 cache.KeyDelete(key);
-                cache.SortedSetRemove("SortedSet" + doctorId, item);
             }
 
 

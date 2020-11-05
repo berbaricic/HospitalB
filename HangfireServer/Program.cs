@@ -11,6 +11,7 @@ using RabbitMQEventBus;
 using RabbitMQ.Client;
 using Microsoft.Extensions.Logging;
 using System.Security.Cryptography.X509Certificates;
+using StackExchange.Redis;
 
 namespace HangfireServer
 {
@@ -28,14 +29,13 @@ namespace HangfireServer
             });
 
             var builder = new ContainerBuilder();
-            builder.RegisterType<SqlDatabaseConnection>().As<ISqlDatabaseConnection>().InstancePerLifetimeScope();
+            builder.RegisterType<SqlDatabaseConnection>().As<ISqlDatabaseConnection>().InstancePerDependency();
 
-            builder.RegisterInstance(new LoggerFactory())
-                .As<ILoggerFactory>();
+            IConnectionMultiplexer redis = ConnectionMultiplexer.Connect("redis");
+            builder.Register(cx => redis.GetDatabase()).InstancePerLifetimeScope();
 
-            builder.RegisterGeneric(typeof(Logger<>))
-                   .As(typeof(ILogger<>))
-                   .SingleInstance();
+            builder.RegisterInstance(new LoggerFactory()).As<ILoggerFactory>();
+            builder.RegisterGeneric(typeof(Logger<>)).As(typeof(ILogger<>)).SingleInstance();
 
             var factory = new ConnectionFactory()
             {
@@ -44,19 +44,16 @@ namespace HangfireServer
             };
             factory.UserName = "user";
             factory.Password = "password";
-
             builder.Register(c => new DefaultRabbitMqPersistentConnection(c.Resolve<ILogger<DefaultRabbitMqPersistentConnection>>(), factory))
                 .As<IRabbitMqPersistentConnection>().SingleInstance();
-
             builder.Register(c => new RabbitMqClient(c.Resolve<IRabbitMqPersistentConnection>(), c.Resolve<ILogger<RabbitMqClient>>()))
-                .As<IEventBus>().InstancePerBackgroundJob();
+                .As<IEventBus>().SingleInstance();
 
-
-            builder.Register(x => new HangfireJobForCache(x.Resolve<IEventBus>())).AsSelf().InstancePerBackgroundJob();
-            builder.Register(x => new HangfireJobForDatabase(x.Resolve<ISqlDatabaseConnection>())).AsSelf().InstancePerBackgroundJob();
+            builder.RegisterType<HangfireJobForCache>().AsSelf().SingleInstance();
+            builder.Register(x => new HangfireJobEventSender(x.Resolve<IEventBus>())).AsSelf().SingleInstance();
+            builder.Register(x => new HangfireJobForDatabase(x.Resolve<ISqlDatabaseConnection>())).AsSelf().SingleInstance();
 
             var container = builder.Build();
-
 
             GlobalConfiguration.Configuration.UseAutofacActivator(container);
 

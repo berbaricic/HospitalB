@@ -1,6 +1,7 @@
 using AppointmentLibrary;
 using Hangfire;
 using Hangfire.SqlServer;
+using HangfireWorker;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -69,6 +70,8 @@ namespace APIAppointment
                 Authorization = new[] { new MyAuthorizationFilter() },
                 IgnoreAntiforgeryToken = true
             });
+
+            RecurringJob.AddOrUpdate<HangfireJobForCache>(worker => worker.RedistributionJob(), Cron.Minutely());
         }
     }
 }

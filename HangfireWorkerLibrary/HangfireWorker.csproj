@@ -16,4 +16,8 @@
     <ProjectReference Include="..\RabbitMQEventBus\RabbitMQEventBus.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="RedisCache\" />
+  </ItemGroup>
+
 </Project>
