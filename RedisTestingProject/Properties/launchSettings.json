@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "RedisTestingProject": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
