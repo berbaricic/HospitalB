@@ -2,7 +2,11 @@
 
 ## Zadatak
 
-U jednom danu je schedulirano npr. 10 slijednih pregleda u trajanju od 30min od 12:00 do 17:00. Treći pregled se nenadano oduži za npr. 20 minuta, te postoji potreba za preraspodjelom tj. odgodom trajanja budućih pregleda u danu. Rješenje za ovaj zadatak je implementacija servisa koji će za N doktora raditi uživo preraspodjelu pregleda za tekući dan.
+U jednom danu je schedulirano npr. 10 slijednih pregleda u trajanju od 30min od 12:00 do 17:00. Treći pregled se nenadano oduži za npr. 20 minuta, te postoji potreba za preraspodjelom tj. odgodom trajanja budućih pregleda u danu. Potrebno je na CRUD servisu napisati jednostavne metode za uređivanje scheduling te uključiti sljedeće kriterije:
+ - Preraspodjela termina pregleda se okida ukoliko je kašnjenje veće od 10 minuta
+ - Ukoliko postoje vremenske rupe, provjeriti da li treba pomicati neki od narednih termina
+ - Ukoliko dođe do pomicanja, poslati event koji se može iskoristiti kao trigger za daljnje akcije (e-mail, notifikacija, logiranje,...)
+Bit zadatka je implementacija servisa koji će za N doktora raditi uživo preraspodjelu pregleda za tekući dan, a svi ostali servisi se izrađuju kao potpora servisu za preraspodjelu termina.
 
 ## Arhitektura sustava
 
@@ -32,6 +36,26 @@ U jednom danu je schedulirano npr. 10 slijednih pregleda u trajanju od 30min od 
    - HangfireJobForCache: job za preraspodjelu termina ukoliko dođe do kašnjenja. Ovaj job je tipa Reccuring Job te se on pokreće svako N vremena (npr. 1 minuta) 
    - HangfireJobForDatabase: job za perzistenciju u bazu je tipa Fire-and-Forget Job i zadaje se kada korisnik spremi završno vrijeme termina i postavi status termina na DONE,
    - HangfireForEventSender: job za slanje eventa je tipa Fire-and-Forget Job i zadaje se pri pomicanju termina
+ 
+ * Dodatne komponente:
+   - MongoDB: baza podataka bazirana na dokumentima koja sprema zapise kao JSON objekte. Dokument je struktura podataka u MongoDB bazi koja se sastoji od field-a i value-a (vrijednost). Value može sadržavati druge dokumente, array, ili array dokumenata te upravo ove stvari smanjuju potrebe za skupim "join" upitima.
+ 
+## Tehnologije
+
+Za izradu projekta korištene su sljedeće tehnologije:
+  * Microsoft Visual Studio 2019 Community
+      - ASP.NET Core Web Api
+      - StackExchange.Redis: Redis klijent za C#
+      - MongoDB .NET Driver: driver za interakciju s MongoDB
+      - Dapper: micro ORM (mapiranje između baze i C#-a)
+      - Hangfire
+  * RabbitMQ - message broker
+  * Redis Cache
+  * Microsoft SQL Server 2019
+  * Microsoft SQL Server Managment Studio 2018
+  * Docker 
+  * Postman - Web API testiranje
+  * MongoDB
 
 
 
