@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "anXxmH4ajhRbbK7TJY0tg/cmIKeA9zfmzsfgocODaJECYt9x5T7TaoJ7RFs0lugKO6bABoTwxU28C99+9KZ5wg==",
+  "dgSpecHash": "PwF4izz9ue7cxfiNfu+11AylnPePy3eXuQyWIXxs6HTYzgUBniZJwWYM0f8D+qwGGX5tjkNqnAiU9+ocQhbOFQ==",
   "success": true,
   "projectFilePath": "D:\\Programiranje\\CS Internship\\HospitalB\\RedisTestingProject\\RedisTestingProject.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\Berislav\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.10.8\\microsoft.visualstudio.azure.containers.tools.targets.1.10.8.nupkg.sha512",
     "C:\\Users\\Berislav\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Berislav\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Berislav\\.nuget\\packages\\mongodb.bson\\2.11.4\\mongodb.bson.2.11.4.nupkg.sha512",
     "C:\\Users\\Berislav\\.nuget\\packages\\newtonsoft.json\\11.0.1\\newtonsoft.json.11.0.1.nupkg.sha512",
     "C:\\Users\\Berislav\\.nuget\\packages\\pipelines.sockets.unofficial\\2.1.16\\pipelines.sockets.unofficial.2.1.16.nupkg.sha512",
     "C:\\Users\\Berislav\\.nuget\\packages\\stackexchange.redis\\2.1.58\\stackexchange.redis.2.1.58.nupkg.sha512",

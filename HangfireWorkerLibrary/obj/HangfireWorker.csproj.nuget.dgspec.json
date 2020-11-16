@@ -41,6 +41,10 @@
             "Hangfire.Core": {
               "target": "Package",
               "version": "[1.7.15, )"
+            },
+            "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[2.11.4, )"
             }
           },
           "imports": [

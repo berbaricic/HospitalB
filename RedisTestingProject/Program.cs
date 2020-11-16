@@ -9,6 +9,10 @@ namespace RedisTestingProject
     {
         static void Main(string[] args)
         {
+            //var client = new MongoClient($@"mongodb://root:example@mongodb:27017");
+            //var database = client.GetDatabase("HospitalB");
+            //var collection = database.GetCollection<Appointment>("Appointments");
+
             ConnectionMultiplexer redis = ConnectionMultiplexer.Connect("redis");
             IDatabase cache = redis.GetDatabase();
 
@@ -36,6 +40,8 @@ namespace RedisTestingProject
                         cache.StringSet(key, JsonConvert.SerializeObject(appointment));
                         cache.SortedSetAddAsync("SortedSet" + appointment.DoctorId, appointment.AppointmentId, appointment.StartTime);
                         cache.SetAdd("DoctorsList", appointment.DoctorId);
+
+                        //collection.InsertOne(appointment);
 
                         startTime = appointment.EndTime;
                     }

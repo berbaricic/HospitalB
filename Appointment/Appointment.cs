@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson.Serialization.IdGenerators;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,6 +8,7 @@ namespace AppointmentLibrary
 {
     public class Appointment
     {
+        [BsonId(IdGenerator = typeof(StringObjectIdGenerator))]
         public string AppointmentId { get; set; }
         public string DoctorId { get; set; }
         public string Patient { get; set; }

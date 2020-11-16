@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "WlIZpC3C5oaZmaioXf8Y7ExIjZ3DrkIisR34GayeCxwwhg0HTk7O64ZhFMTkU6d2ItHP2nqLiG9GZuINcDXTIw==",
+  "dgSpecHash": "ybMihYytfkoqqtsZ/5m/w+OGCDgrZq3rgBysNQS2DTo2ye75omUFPQSykhY0i6lCL+r01nN/GxDns362/GuJ1w==",
   "success": true,
   "projectFilePath": "D:\\Programiranje\\CS Internship\\HospitalB\\HangfireWorkerLibrary\\HangfireWorker.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\Berislav\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Berislav\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Berislav\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Berislav\\.nuget\\packages\\mongodb.bson\\2.11.4\\mongodb.bson.2.11.4.nupkg.sha512",
     "C:\\Users\\Berislav\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\Berislav\\.nuget\\packages\\pipelines.sockets.unofficial\\2.1.16\\pipelines.sockets.unofficial.2.1.16.nupkg.sha512",
     "C:\\Users\\Berislav\\.nuget\\packages\\polly\\7.2.1\\polly.7.2.1.nupkg.sha512",

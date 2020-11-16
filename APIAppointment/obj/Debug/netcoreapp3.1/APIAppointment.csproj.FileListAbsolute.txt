@@ -123,3 +123,12 @@ D:\Programiranje\CS Internship\HospitalB\APIAppointment\bin\Debug\netcoreapp3.1\
 D:\Programiranje\CS Internship\HospitalB\APIAppointment\bin\Debug\netcoreapp3.1\HangfireWorker.dll
 D:\Programiranje\CS Internship\HospitalB\APIAppointment\bin\Debug\netcoreapp3.1\Hangfire.AspNetCore.dll
 D:\Programiranje\CS Internship\HospitalB\APIAppointment\bin\Debug\netcoreapp3.1\Hangfire.SqlServer.dll
+D:\Programiranje\CS Internship\HospitalB\APIAppointment\bin\Debug\netcoreapp3.1\Autofac.dll
+D:\Programiranje\CS Internship\HospitalB\APIAppointment\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Programiranje\CS Internship\HospitalB\APIAppointment\bin\Debug\netcoreapp3.1\MongoDB.Bson.dll
+D:\Programiranje\CS Internship\HospitalB\APIAppointment\bin\Debug\netcoreapp3.1\Polly.dll
+D:\Programiranje\CS Internship\HospitalB\APIAppointment\bin\Debug\netcoreapp3.1\RabbitMQ.Client.dll
+D:\Programiranje\CS Internship\HospitalB\APIAppointment\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+D:\Programiranje\CS Internship\HospitalB\APIAppointment\bin\Debug\netcoreapp3.1\RabbitMQEventBus.dll
+D:\Programiranje\CS Internship\HospitalB\APIAppointment\bin\Debug\netcoreapp3.1\AppointmentLibrary.pdb
+D:\Programiranje\CS Internship\HospitalB\APIAppointment\bin\Debug\netcoreapp3.1\RabbitMQEventBus.pdb

@@ -1,3 +1,4 @@
+using APIAppointment.Models;
 using AppointmentLibrary;
 using Hangfire;
 using Hangfire.SqlServer;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using StackExchange.Redis;
 using System;
 
@@ -42,6 +44,12 @@ namespace APIAppointment
                     UseRecommendedIsolationLevel = true,
                     DisableGlobalLocks = true
                 }));
+
+            services.Configure<HospitalBDatabaseSettings>(Configuration.GetSection(nameof(HospitalBDatabaseSettings)));
+
+            services.AddSingleton<IHospitalBDatabaseSettings>(sp => sp.GetRequiredService<IOptions<HospitalBDatabaseSettings>>().Value);
+
+            services.AddSingleton<AppointmentService>();
 
             services.AddControllers();
         }

@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Hangfire.Core" Version="1.7.15" />
+    <PackageReference Include="MongoDB.Bson" Version="2.11.4" />
   </ItemGroup>
 
 </Project>

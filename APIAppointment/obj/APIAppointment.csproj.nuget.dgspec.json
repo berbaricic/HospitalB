@@ -57,6 +57,10 @@
               "target": "Package",
               "version": "[3.1.4, )"
             },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[2.11.4, )"
+            },
             "StackExchange.Redis": {
               "target": "Package",
               "version": "[2.1.58, )"
@@ -121,6 +125,10 @@
             "Hangfire.Core": {
               "target": "Package",
               "version": "[1.7.15, )"
+            },
+            "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[2.11.4, )"
             }
           },
           "imports": [

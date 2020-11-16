@@ -13,10 +13,12 @@ namespace APIAppointment.Controllers
     public class AppointmentController : ControllerBase
     {
         private readonly IDatabase cache;
+        private readonly AppointmentService appointmentService;
 
-        public AppointmentController(IDatabase cache)
+        public AppointmentController(IDatabase cache, AppointmentService appointmentService)
         {
             this.cache = cache;
+            this.appointmentService = appointmentService;
         }
 
         // GET: /appointment/doctor/doktor1
@@ -79,6 +81,8 @@ namespace APIAppointment.Controllers
                 }
                 //perzistencija termina u bazu nakon što su obavljeni
                 BackgroundJob.Enqueue<HangfireJobForDatabase>(worker => worker.PersistDataToDatabaseJob(appointment));
+                //perzistencija termina u NoSQL bazu
+                appointmentService.Create(appointment);
             }
         }
 

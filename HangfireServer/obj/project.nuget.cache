@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "gOU8RxWKvM42aUZZjuPv74AZ54LL76wlCRHIE1KdyItPhhoef4wI96ZulYtRvyselTB87xeokrpwvNfFooBAtQ==",
+  "dgSpecHash": "EYe3lv8XCvz2BvrRnuJWYEvIOO/2oMYHbvV1gjkFz80LxCATbtsCdvJ48VFA0YGwQdDb/7AWg6D6cBPHuWsp1Q==",
   "success": true,
   "projectFilePath": "D:\\Programiranje\\CS Internship\\HospitalB\\HangfireServer\\HangfireServer.csproj",
   "expectedPackageFiles": [
@@ -41,6 +41,7 @@
     "C:\\Users\\Berislav\\.nuget\\packages\\microsoft.win32.primitives\\4.0.1\\microsoft.win32.primitives.4.0.1.nupkg.sha512",
     "C:\\Users\\Berislav\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Berislav\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Berislav\\.nuget\\packages\\mongodb.bson\\2.11.4\\mongodb.bson.2.11.4.nupkg.sha512",
     "C:\\Users\\Berislav\\.nuget\\packages\\netstandard.library\\1.6.0\\netstandard.library.1.6.0.nupkg.sha512",
     "C:\\Users\\Berislav\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\Berislav\\.nuget\\packages\\pipelines.sockets.unofficial\\2.1.16\\pipelines.sockets.unofficial.2.1.16.nupkg.sha512",

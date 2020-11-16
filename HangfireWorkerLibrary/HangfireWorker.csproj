@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="RedisCache\**" />
+    <EmbeddedResource Remove="RedisCache\**" />
+    <None Remove="RedisCache\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.35" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     <PackageReference Include="StackExchange.Redis" Version="2.1.58" />
@@ -14,10 +20,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Appointment\AppointmentLibrary.csproj" />
     <ProjectReference Include="..\RabbitMQEventBus\RabbitMQEventBus.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="RedisCache\" />
   </ItemGroup>
 
 </Project>

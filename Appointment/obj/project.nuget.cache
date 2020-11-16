@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "5Kdhg8WjwpOheXQMvkyQKRXBMhAw92txLSjZpRvtCeiaIA9dgkV9XOG9iSctkeVK2yyOD3qJrQw0/dwXEFeZ8g==",
+  "dgSpecHash": "paH0uGvJL8l6I+glpXrslHUFsRJPUtWaygXZfF/boEpG+xEqhH0Deba4vwUlK/5xCxaVW/BH+yCK6wvffBp8tQ==",
   "success": true,
   "projectFilePath": "D:\\Programiranje\\CS Internship\\HospitalB\\Appointment\\AppointmentLibrary.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Berislav\\.nuget\\packages\\hangfire.core\\1.7.15\\hangfire.core.1.7.15.nupkg.sha512",
+    "C:\\Users\\Berislav\\.nuget\\packages\\mongodb.bson\\2.11.4\\mongodb.bson.2.11.4.nupkg.sha512",
     "C:\\Users\\Berislav\\.nuget\\packages\\newtonsoft.json\\11.0.1\\newtonsoft.json.11.0.1.nupkg.sha512"
   ],
   "logs": []
