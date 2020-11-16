@@ -38,8 +38,8 @@ Bit zadatka je implementacija servisa koji će za N doktora raditi uživo preras
    - HangfireForEventSender: job za slanje eventa je tipa Fire-and-Forget Job i zadaje se pri pomicanju termina
  
  * Dodatne komponente:
-   - MongoDB: baza podataka bazirana na dokumentima koja sprema zapise kao JSON objekte. Dokument je struktura podataka u MongoDB bazi koja se sastoji od field-a i value-a (vrijednost). Value može sadržavati druge dokumente, array, ili array dokumenata te upravo ove stvari smanjuju potrebe za skupim "join" upitima.
- 
+   - MongoDB: NoSQL baza podataka bazirana na dokumentima koja sprema zapise kao BSON objekte ("Binary JSON": MongoDB sprema podatke u BSON formatu interno te preko mreže, ali i sve što se reprenzentira u formatu JSON može biti pohranjeno u MongoDB, i vraćeno nazad u JSON-u). Dokument je struktura podataka u MongoDB bazi koja se sastoji od field-a i value-a (vrijednost). Value može sadržavati druge dokumente, array, ili array dokumenata te upravo ove stvari smanjuju potrebe za složenim join upitima. U slučaju ovog projekta, MongoDB je iskorišten kao baza za pohranu završenih termina pregleda. Pokrenut je MongoDB server te je kreirana baza HospitalB i kolekcija Appointments. Kreiranje jednog dokumenta u bazi odgovara kreiranju objekta Appointments koja predstavlja entity model. Model je već bio postojeći jer isti objekt je spreman u cache i u SQL bazu, ali za potrebe MongoDB-a je dodana anotacija BsonId koja reprezentira primarni ključ dokumenta (jedinstven je). Za field "DoctorId" dodan je index te uz pomoć NoSQLBooster-a testirane su perfomanse dohvaćanja podataka s indeksom i bez indeksa. Dohvaćanje podataka bez indexa obuhvaćalo je pretragu cijele kolekcije (što može sadržavati ogroman broj zapisa), dok s indeksom MongoDB je uradio "index scan", pronašao podudarajuće zapise i vratio rezultate nazad. Još jedna odlična stvar kod indeksa je da može vratiti sortirane rezultate.
+   
 ## Tehnologije
 
 Za izradu projekta korištene su sljedeće tehnologije:
